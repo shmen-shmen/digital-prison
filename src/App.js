@@ -11,10 +11,16 @@ function App() {
 	);
 }
 
+const addPseudo = (e) => {
+	console.log(e.target);
+};
+
 const Cellz = () => {
 	return (
 		<section className="Cellz">
-			<div className="grid-cell">inmate</div>
+			<div className="grid-cell" id="inmate-1" onClick={addPseudo}>
+				inmate
+			</div>
 			<div className="grid-cell">inmate</div>
 			<div className="grid-cell grid-col-span-2">inmate</div>
 			<div className="grid-cell">inmate</div>
