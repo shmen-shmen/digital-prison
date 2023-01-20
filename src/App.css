@@ -2,6 +2,7 @@ body {
 	background-color: rgb(0, 0, 66);
 	width: 1000px;
 	margin: 6.66rem auto 0 auto;
+	image-rendering: pixelated;
 }
 
 /* .App {
@@ -17,7 +18,7 @@ body {
 }
 .grid-cell {
 	position: relative;
-	background-image: url(../public/assets/images/boxer-small.jpg);
+	background-image: url(../public/assets/images/boxer-col-16-dith-0-size-10.jpg);
 	background-size: cover;
 	background-position: center;
 	color: black;
@@ -49,17 +50,6 @@ body {
 .grid-cell:hover::before {
 	background-image: url(../public/assets/images/dots-green.png);
 }
-/* .grid-cell::after {
-	position: absolute;
-	z-index: 10;
-	width: 100%;
-	height: calc(100% - 1rem);
-	color: green;
-	background-image: url(../public/assets/images/dots-green.png);
-	background-size: 10px;
-	background-origin: content-box;
-	content: "";
-} */
 
 .AMF {
 	background-image: none;

@@ -12,31 +12,11 @@ function App() {
 }
 
 const Cellz = (props) => {
-	const [size, setSize] = useState("");
-
-	const addPseudo = (e) => {
-		let { width, height } = e.target.style;
-
-		size === "500px" ? setSize("") : setSize("500px");
-
-		// e.target.style.width = size;
-		// e.target.style.height = size;
-		e.target.style.backgroundImage = "url(../public/assets/images/boxer.jpg)";
-	};
-
+	const [showFG, setShowFG] = useState(false);
 	return (
 		<section className="Cellz">
-			<div
-				className="grid-cell"
-				id="inmate-1"
-				onClick={addPseudo}
-				style={{ width: size, height: size }}
-			>
-				<h3>inmate</h3>
-			</div>
-			<div className="grid-cell">
-				<h3>inmate</h3>
-			</div>
+			<Cell n={"1"} showFG={showFG} setShowFG={setShowFG}></Cell>
+			<Cell n={"2"}></Cell>
 			<div className="grid-cell grid-col-span-2">
 				<h3>inmate</h3>
 			</div>
@@ -61,8 +41,55 @@ const Cellz = (props) => {
 			<div className="grid-cell grid-col-span-2">
 				<h3>inmate</h3>
 			</div>
+			{showFG ? <CellOnForeground /> : null}
 		</section>
 	);
+};
+
+const Cell = (props) => {
+	const [cellSize, setCellSize] = useState("");
+	const [image, setImage] = useState("boxer-col-16-dith-0-size-10.jpg");
+
+	const cellHandler = (e) => {
+		const computedStyle = window.getComputedStyle(e.target);
+		const copiedStyle = {};
+		for (const prop in computedStyle) {
+			if (Object.hasOwn(computedStyle, prop)) {
+				const key = computedStyle[prop];
+				const value = computedStyle[key];
+				copiedStyle[key] = value;
+			}
+		}
+
+		console.log(window.getComputedStyle(CellOnForeground()));
+		// props.setShowFG(true);
+		// let { width, height } = e.target.style;
+
+		// cellSize === "500px" ? setCellSize("") : setCellSize("500px");
+		// image === "boxer-col-64-dith-0-size-50.jpg"
+		// 	? setImage("boxer-col-16-dith-0-size-10.jpg")
+		// 	: setImage("boxer-col-64-dith-0-size-50.jpg");
+	};
+
+	return (
+		<div
+			className="grid-cell"
+			id="inmate-1"
+			onClick={cellHandler}
+			style={{
+				width: cellSize,
+				height: cellSize,
+				backgroundImage: `url(/assets/images/${image})`,
+			}}
+		>
+			<h3>inmate-{props.n}</h3>
+		</div>
+	);
+};
+
+let CellOnForeground = () => {
+	console.log("foregroundEl was rendered");
+	return <div></div>;
 };
 
 export default App;
