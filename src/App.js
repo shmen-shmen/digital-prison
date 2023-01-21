@@ -41,12 +41,14 @@ const Cellz = (props) => {
 			<div className="grid-cell grid-col-span-2">
 				<h3>inmate</h3>
 			</div>
+			<Cell n={"1"} showFG={showFG} setShowFG={setShowFG}></Cell>
 			<div className="grid-cell">
 				<h3>inmate</h3>
 			</div>
 			<div className="grid-cell grid-col-span-2">
 				<h3>inmate</h3>
 			</div>
+			{showFG ? <CellZoom showFG={showFG} setShowFG={setShowFG} /> : null}
 			{showFG ? <CellZoom showFG={showFG} setShowFG={setShowFG} /> : null}
 		</section>
 	);
@@ -56,15 +58,17 @@ const Cell = (props) => {
 	const { name, smallImg, largeImg } = inmates.inmate1;
 	const [cellSize, setCellSize] = useState("");
 	const [image, setImage] = useState(smallImg);
+	const [spanNum, setspanNum] = useState("2");
 
 	const cellHandler = (e) => {
 		// VAR-1 SMALL WINODW EXPANDS:
-		// let { width, height } = e.target.style;
-		// cellSize === "500px" ? setCellSize("") : setCellSize("500px");
-		// image === smallImg ? setImage(largeImg) : setImage(smallImg);
+		let { width, height } = e.target.style;
+		cellSize === "500px" ? setCellSize("") : setCellSize("500px");
+		image === smallImg ? setImage(largeImg) : setImage(smallImg);
+		image === smallImg ? setspanNum("10") : setspanNum("2");
 
 		// VAR-2 NEW WINODW APPEARS IN FRONT OF EVERYTHING:
-		props.setShowFG(!props.showFG);
+		// props.setShowFG(!props.showFG);
 
 		// VAR-3 IDK WHAT THAT IS:
 		// const computedStyle = window.getComputedStyle(e.target);
@@ -88,6 +92,7 @@ const Cell = (props) => {
 				width: cellSize,
 				height: cellSize,
 				backgroundImage: `url(/assets/images/${image})`,
+				gridRow: `span ${spanNum}`,
 			}}
 		>
 			<h3>{name}</h3>
