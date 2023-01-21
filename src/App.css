@@ -9,6 +9,7 @@ body {
 } */
 
 .Cellz {
+	position: relative;
 	color: red;
 	height: calc(100vh - 6.66rem * 2);
 	min-height: 1000px;

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import { Counter } from "./features/counter/Counter";
 import "./App.css";
+import inmates from "./inmates";
 
 function App() {
 	return (
@@ -13,10 +14,15 @@ function App() {
 
 const Cellz = (props) => {
 	const [showFG, setShowFG] = useState(false);
+	if (showFG) {
+		document.body.style.overflow = "hidden";
+	} else {
+		document.body.style.overflow = "auto";
+	}
 	return (
 		<section className="Cellz">
 			<Cell n={"1"} showFG={showFG} setShowFG={setShowFG}></Cell>
-			<Cell n={"2"}></Cell>
+			<Cell n={"2"} showFG={showFG} setShowFG={setShowFG}></Cell>
 			<div className="grid-cell grid-col-span-2">
 				<h3>inmate</h3>
 			</div>
@@ -41,40 +47,42 @@ const Cellz = (props) => {
 			<div className="grid-cell grid-col-span-2">
 				<h3>inmate</h3>
 			</div>
-			{showFG ? <CellOnForeground /> : null}
+			{showFG ? <CellZoom showFG={showFG} setShowFG={setShowFG} /> : null}
 		</section>
 	);
 };
 
 const Cell = (props) => {
+	const { name, smallImg, largeImg } = inmates.inmate1;
 	const [cellSize, setCellSize] = useState("");
-	const [image, setImage] = useState("boxer-col-16-dith-0-size-10.jpg");
+	const [image, setImage] = useState(smallImg);
 
 	const cellHandler = (e) => {
-		const computedStyle = window.getComputedStyle(e.target);
-		const copiedStyle = {};
-		for (const prop in computedStyle) {
-			if (Object.hasOwn(computedStyle, prop)) {
-				const key = computedStyle[prop];
-				const value = computedStyle[key];
-				copiedStyle[key] = value;
-			}
-		}
-
-		console.log(window.getComputedStyle(CellOnForeground()));
-		// props.setShowFG(true);
+		// VAR-1 SMALL WINODW EXPANDS:
 		// let { width, height } = e.target.style;
-
 		// cellSize === "500px" ? setCellSize("") : setCellSize("500px");
-		// image === "boxer-col-64-dith-0-size-50.jpg"
-		// 	? setImage("boxer-col-16-dith-0-size-10.jpg")
-		// 	: setImage("boxer-col-64-dith-0-size-50.jpg");
+		// image === smallImg ? setImage(largeImg) : setImage(smallImg);
+
+		// VAR-2 NEW WINODW APPEARS IN FRONT OF EVERYTHING:
+		props.setShowFG(!props.showFG);
+
+		// VAR-3 IDK WHAT THAT IS:
+		// const computedStyle = window.getComputedStyle(e.target);
+		// const copiedStyle = {};
+		// for (const prop in computedStyle) {
+		// 	if (Object.hasOwn(computedStyle, prop)) {
+		// 		const key = computedStyle[prop];
+		// 		const value = computedStyle[key];
+		// 		copiedStyle[key] = value;
+		// 	}
+		// }
+		// console.log(window.getComputedStyle(CellZoom()));
 	};
 
 	return (
 		<div
 			className="grid-cell"
-			id="inmate-1"
+			id={"inmate-" + name}
 			onClick={cellHandler}
 			style={{
 				width: cellSize,
@@ -82,14 +90,41 @@ const Cell = (props) => {
 				backgroundImage: `url(/assets/images/${image})`,
 			}}
 		>
-			<h3>inmate-{props.n}</h3>
+			<h3>{name}</h3>
 		</div>
 	);
 };
 
-let CellOnForeground = () => {
+let CellZoom = (props) => {
 	console.log("foregroundEl was rendered");
-	return <div></div>;
+	const { name, largeImg } = inmates.inmate1;
+	const hider = () => {
+		props.setShowFG(!props.showFG);
+	};
+	return (
+		<div
+			className="cellZoom"
+			onClick={hider}
+			style={{
+				position: "absolute",
+				bottom: "calc(50% - 200px)",
+				left: "calc(50% - 250px)",
+				color: "white",
+				backgroundColor: "black",
+			}}
+		>
+			<h1>CELL ZOOM</h1>
+			<div
+				style={{
+					backgroundImage: `url(/assets/images/${largeImg})`,
+					backgroundRepeat: "no-repeat",
+					backgroundSize: "cover",
+					width: "500px",
+					height: "500px",
+				}}
+			></div>
+		</div>
+	);
 };
 
 export default App;
