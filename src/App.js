@@ -62,13 +62,13 @@ const Cell = (props) => {
 
 	const cellHandler = (e) => {
 		// VAR-1 SMALL WINODW EXPANDS:
-		let { width, height } = e.target.style;
-		cellSize === "500px" ? setCellSize("") : setCellSize("500px");
-		image === smallImg ? setImage(largeImg) : setImage(smallImg);
-		image === smallImg ? setspanNum("10") : setspanNum("2");
+		// let { width, height } = e.target.style;
+		// cellSize === "500px" ? setCellSize("") : setCellSize("500px");
+		// image === smallImg ? setImage(largeImg) : setImage(smallImg);
+		// image === smallImg ? setspanNum("10") : setspanNum("2");
 
 		// VAR-2 NEW WINODW APPEARS IN FRONT OF EVERYTHING:
-		// props.setShowFG(!props.showFG);
+		props.setShowFG(!props.showFG);
 
 		// VAR-3 IDK WHAT THAT IS:
 		// const computedStyle = window.getComputedStyle(e.target);
