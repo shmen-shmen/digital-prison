@@ -84,3 +84,21 @@ body {
 	bottom: 0;
 	left: 20%;
 }
+
+.cell-zoom h3 {
+	background-color: black;
+	font-size: 1.5rem;
+}
+
+.cell-menu {
+	display: flex;
+	width: 100%;
+	font-size: 1.5rem;
+	background-color: black;
+}
+
+.cell-zoom button {
+	border: none;
+	background-color: black;
+	color: red;
+}

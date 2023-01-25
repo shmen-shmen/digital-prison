@@ -1,1 +1,1 @@
-sort of dos styled prison website for small guys that went insane in their cellz i guess
+DOS styled prison website for small guys who went insane in their cellz i guess

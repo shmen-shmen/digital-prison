@@ -97,19 +97,31 @@ let CellZoom = (props) => {
 	return (
 		<>
 			<div
-				className="cellZoom"
+				className="cell-zoom"
 				onClick={hider}
 				style={{
 					position: "absolute",
+					top: "17%",
+					left: "17%",
 					zIndex: "666",
 					backgroundImage: `url(/assets/images/${largeImg})`,
 					backgroundRepeat: "no-repeat",
 					backgroundSize: "cover",
-					width: "100%",
-					height: "100%",
+					width: "66%",
+					height: "66%",
+					border: "10px solid black",
 				}}
 			>
-				<h1>CELL ZOOM</h1>
+				<h3>
+					{"inmate - "}
+					<span style={{ fontSize: "1.5rem", textTransform: "uppercase" }}>
+						{name}
+					</span>
+				</h3>
+				<div className="cell-menu">
+					<button>TEACH HIM A LESSON</button>
+					<button>ENOUGH FOR TODAY</button>
+				</div>
 			</div>
 		</>
 	);
