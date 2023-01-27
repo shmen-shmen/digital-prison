@@ -46,6 +46,7 @@ const Cellz = (props) => {
 					setShowFG={setShowFG}
 				/>
 			) : null}
+			{/* {showFG ? <BackDrop /> : null} */}
 		</section>
 	);
 };
@@ -81,7 +82,7 @@ const Cell = (props) => {
 				// height: `${cellSize}`,
 			}}
 		>
-			<h3>{name}</h3>
+			<h3>▓▓▓▓▒░ {name}</h3>
 		</div>
 	);
 };
@@ -90,39 +91,62 @@ let CellZoom = (props) => {
 	console.log("foregroundEl was rendered");
 	const { showFG, setShowFG, inmate, setInmateFg } = props;
 	const { name, largeImg } = inmate;
+	const [size, setSize] = useState(77);
+	const [display, setDisplay] = useState("none");
+	const [invert, setInvert] = useState(100);
+
+	setTimeout(() => {
+		setDisplay("block");
+	}, 250);
+
 	const hider = () => {
-		setShowFG(!showFG);
-		setInmateFg({});
+		setDisplay("none");
+		setTimeout(() => {
+			setInvert(0);
+			setShowFG(!showFG);
+			setInmateFg({});
+		}, 250);
 	};
+
 	return (
 		<>
 			<div
 				className="cell-zoom"
-				onClick={hider}
 				style={{
+					display: `${display}`,
 					position: "absolute",
-					top: "17%",
-					left: "17%",
+					top: `calc((100% - ${size}%) / 2)`,
+					left: `calc((100% - ${size}%) / 2)`,
 					zIndex: "666",
 					backgroundImage: `url(/assets/images/${largeImg})`,
 					backgroundRepeat: "no-repeat",
 					backgroundSize: "cover",
-					width: "66%",
-					height: "66%",
+					width: `${size}%`,
+					height: `${size}%`,
 					border: "10px solid black",
 				}}
 			>
 				<h3>
-					{"inmate - "}
+					═╬═{"Inmate - "}
 					<span style={{ fontSize: "1.5rem", textTransform: "uppercase" }}>
 						{name}
 					</span>
+					═╬═
 				</h3>
 				<div className="cell-menu">
-					<button>TEACH HIM A LESSON</button>
-					<button>ENOUGH FOR TODAY</button>
+					<button>[BUTTON]</button>
+					<button>[BUTTON]</button>
+					<button>[BUTTON]</button>
+					<button>[BUTTON]</button>
+					<button onClick={hider}>[ENOUGH FOR TODAY]</button>
 				</div>
 			</div>
+			<div
+				className="cell-zoom-backdrop"
+				style={{
+					backdropFilter: `invert(${100}%)`,
+				}}
+			></div>
 		</>
 	);
 };

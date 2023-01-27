@@ -31,40 +31,39 @@ body {
 	background-repeat: no-repeat;
 	color: black;
 	border: 5px solid black;
+	color: white;
 }
 
 .grid-cell h3 {
-	background-color: black;
-	color: red;
-	font-size: 1.25rem;
-}
-
-.func-cell::after {
 	position: absolute;
-	z-index: 100;
-	width: calc(100%);
-	height: calc(100%);
-	left: -5px;
-	top: -5px;
-	border: 5px solid transparent;
-	border: 5px solid red;
-	z-index: 10000;
-	content: "";
+	width: 100%;
+	/* text-align: center; */
+	/* bottom: 0; */
+	background-color: black;
+	font-size: 1.2rem;
 }
 
-.grid-cell:hover:before {
+.grid-cell:hover {
+	color: red;
+}
+
+/* .grid-cell:before {
 	position: absolute;
 	z-index: -10;
 	width: 100%;
 	height: 100%;
-	top: 12px;
-	left: 12px;
+	top: 15px;
+	left: 15px;
+	padding: 5px;
 	color: red;
-	background-image: url(../public/assets/images/dots-red.png);
+	background-image: url(../public/assets/images/dots-white.png);
 	background-size: 12px;
 	background-position: bottom right;
 	content: "";
 }
+.grid-cell:hover:before {
+	background-image: url(../public/assets/images/dots-red.png);
+} */
 
 .AMF {
 	background-image: none;
@@ -88,17 +87,40 @@ body {
 .cell-zoom h3 {
 	background-color: black;
 	font-size: 1.5rem;
+	color: white;
 }
 
 .cell-menu {
 	display: flex;
+	position: absolute;
+	justify-content: space-around;
+	bottom: -10px;
 	width: 100%;
 	font-size: 1.5rem;
 	background-color: black;
+	padding: 5px 0 5px 0;
 }
 
 .cell-zoom button {
 	border: none;
 	background-color: black;
+	color: white;
+	font-size: 1.25rem;
+	padding: 5px;
+}
+
+.cell-zoom button:hover {
 	color: red;
+}
+.cell-zoom button:active {
+	color: white;
+	background-color: red;
+}
+
+.cell-zoom-backdrop {
+	position: absolute;
+	top: -6.66rem;
+	left: calc((100vw - 1000px) / -2);
+	width: 100vw;
+	height: 100vh;
 }
