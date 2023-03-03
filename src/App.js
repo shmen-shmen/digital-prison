@@ -121,6 +121,7 @@ let CellZoom = (props) => {
 					left: `calc((100% - ${size}%) / 2)`,
 					zIndex: "666",
 					backgroundImage: `url(${
+						//whaaat?
 						process.env.PUBLIC_URL + "/assets/images/" + largeImg
 					})`,
 					backgroundRepeat: "no-repeat",
