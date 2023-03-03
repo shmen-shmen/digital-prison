@@ -5,6 +5,8 @@ import "./App.css";
 import inmates from "./inmates";
 
 function App() {
+	const PUBLIC_URL = "https://shmen-shmen.github.io/digital-prison/";
+
 	return (
 		<div className="App">
 			<Cellz></Cellz>
@@ -76,7 +78,9 @@ const Cell = (props) => {
 			id={"inmate-" + name}
 			onClick={cellHandler}
 			style={{
-				backgroundImage: `url(/assets/images/${smallImg})`,
+				backgroundImage: `url(${
+					process.env.PUBLIC_URL + "/assets/images/" + smallImg
+				})`,
 				gridColumn: `span ${aspect}`,
 				// width: `${cellSize}`,
 				// height: `${cellSize}`,
@@ -118,7 +122,9 @@ let CellZoom = (props) => {
 					top: `calc((100% - ${size}%) / 2)`,
 					left: `calc((100% - ${size}%) / 2)`,
 					zIndex: "666",
-					backgroundImage: `url(/assets/images/${largeImg})`,
+					backgroundImage: `url(${
+						process.env.PUBLIC_URL + "/assets/images/" + largeImg
+					})`,
 					backgroundRepeat: "no-repeat",
 					backgroundSize: "cover",
 					width: `${size}%`,
