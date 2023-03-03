@@ -5,8 +5,6 @@ import "./App.css";
 import inmates from "./inmates";
 
 function App() {
-	const PUBLIC_URL = "https://shmen-shmen.github.io/digital-prison/";
-
 	return (
 		<div className="App">
 			<Cellz></Cellz>
@@ -123,7 +121,7 @@ let CellZoom = (props) => {
 					left: `calc((100% - ${size}%) / 2)`,
 					zIndex: "666",
 					backgroundImage: `url(${
-						process.env.PUBLIC_URL + "/assets/images/" + largeImg
+						process.env.PUBLIC_URL + "..public/assets/images/" + largeImg
 					})`,
 					backgroundRepeat: "no-repeat",
 					backgroundSize: "cover",
