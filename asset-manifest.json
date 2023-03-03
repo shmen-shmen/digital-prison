@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/digital-prison/static/css/main.b67c4f23.css",
-    "main.js": "/digital-prison/static/js/main.97bf5fd1.js",
+    "main.js": "/digital-prison/static/js/main.e9b31713.js",
     "static/js/787.157de639.chunk.js": "/digital-prison/static/js/787.157de639.chunk.js",
     "static/media/Web437_IBM_VGA_8x16.woff": "/digital-prison/static/media/Web437_IBM_VGA_8x16.a2517e447250544a5fbe.woff",
     "static/media/logo.svg": "/digital-prison/static/media/logo.b2e5a01e505f739f1484b881277d5186.svg",
     "index.html": "/digital-prison/index.html",
     "main.b67c4f23.css.map": "/digital-prison/static/css/main.b67c4f23.css.map",
-    "main.97bf5fd1.js.map": "/digital-prison/static/js/main.97bf5fd1.js.map",
+    "main.e9b31713.js.map": "/digital-prison/static/js/main.e9b31713.js.map",
     "787.157de639.chunk.js.map": "/digital-prison/static/js/787.157de639.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b67c4f23.css",
-    "static/js/main.97bf5fd1.js"
+    "static/js/main.e9b31713.js"
   ]
 }
